@@ -78,15 +78,11 @@ public class HangMan{
         boolean found = false;
         for(int i=0;i<hiddenText.length;i++){
             if(input.toLowerCase().charAt(0) == hiddenText[i]){
-                if(userAnswers[i]!='?') {
-                    GUI.duplicate();
-                    return;
-                }
-                else{
-                    player.play("hangManRightAnswer");
-                    userAnswers[i] = hiddenText[i];
-                    found = true;
-                }
+                
+                player.play("hangManRightAnswer");
+                userAnswers[i] = hiddenText[i];
+                found = true;
+                
                 
             }
         }

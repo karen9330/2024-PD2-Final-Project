@@ -135,11 +135,6 @@ public class GUI {
             e.printStackTrace();
         }
     }
-    public static void duplicate(){
-        System.out.println("\n> Oops You have guessed the character before!");
-        System.out.println("> Guess Again!");
-        System.out.printf("> The lives remain %d !\n",HangMan.lives);
-    }
     public static void bonusgreeting(){
         System.out.println("========================================================================");
         try {
