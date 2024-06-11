@@ -41,6 +41,7 @@ public class GUI {
         System.out.println("> Please input your answer (one character)");
     }
     public static void winmsg(){
+        HangMan.player.stop("hangManBackGround");
         HangMan.player.play("hangManWin");
         System.out.println("========================================================================");
         try {
@@ -63,18 +64,20 @@ public class GUI {
         System.out.println("========================================================================");
         try {
             Thread.sleep(1000);
-            HangMan.player.stop("HangManWing");
+            HangMan.player.stop("HangManWin");
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
     public static void recover(){
+        HangMan.player.stop("hangManBackGround");
         System.out.println("========================================================================");
         System.out.println("> Do you want to Recover?");
         System.out.println("> Please input your answer (Y/N)");
     }
     public static void lose(){
+        HangMan.player.stop("hangManBackGround");
         HangMan.player.play("hangmanGameOver");
         System.out.println("========================================================================");
         try {
@@ -108,6 +111,23 @@ public class GUI {
         System.out.println("\n> Oops! You typed the wrong character!");
         System.out.println("> There is no character in this word match your input >__<");
         System.out.printf("> The lives remain %d !\n",HangMan.lives);
+        System.out.println("========================================================================");
+        try {
+            String file = "pic/hangMan" + HangMan.lives +".txt";
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),("UTF-8")) );
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                try {
+                    Thread.sleep(30);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static void correct(){
         System.out.println("\n> Congradulation! You typed the right character!");
@@ -203,16 +223,14 @@ public class GUI {
             }
             reader.close();
             System.out.println("\n\n> You win the bonus game!");
+            Thread.sleep(1500);
+            HangMan.player.stop("HangManWing");
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        try {
-            Thread.sleep(1000);
-            HangMan.player.stop("HangManWing");
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
     }
 }
