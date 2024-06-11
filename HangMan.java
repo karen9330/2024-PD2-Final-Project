@@ -27,6 +27,7 @@ public class HangMan{
         player.loadSoundEffect("hangManRightAnswer", Paths.get("music/hangManRightAnswer.wav").toString());
         player.loadSoundEffect("hangManWrongAnswer", Paths.get("music/hangManWrongAnswer.wav").toString());
         player.loadSoundEffect("hangManWin",Paths.get("music/hangManWin.wav").toString());
+        player.loadSoundEffect("hangManBackGround",Paths.get("music/hangManBackGroundMusic.wav").toString());
     }
     public static void getHiddentxt(){
         ArrayList<String> dictionary = HangMan.getNewsFromCNN();
@@ -109,8 +110,9 @@ public class HangMan{
         }
         return true;
     }
-    public static void LogicOfGame() throws InterruptedException{
+    public static void logicOfGame() throws InterruptedException{
         getmusic();
+        player.play("hangManBackGround");
         GUI.greeting();
         getHiddentxt();
         useranswerInitial();

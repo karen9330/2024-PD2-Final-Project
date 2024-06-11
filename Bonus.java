@@ -9,12 +9,12 @@ public class Bonus extends HangMan
     public static boolean getNewChance() throws InterruptedException
     {
         int answer  = randomNumber() ;
-        int platTime = 1 ;
+        int playTime = 1 ;
         boolean isTrue = false;
         player.loadBackgroundMusic("guessNumer",Paths.get("music/guessNumberBackGroundMusic.wav").toString());
         player.playBackGround("guessNumer",6);
         GUI.bonusgreeting();
-        while(!isTrue && platTime < 11)
+        while(!isTrue && playTime < 11)
         {  
             String inPutNumber = keyBoard.nextLine();
             try 
@@ -45,7 +45,7 @@ public class Bonus extends HangMan
                 {
                     if(answer == Integer.parseInt(inPutNumber))
                     {   
-                        Thread.sleep(3000);
+                        Thread.sleep(1500);
                         isTrue = true ;
                         isWin = true;
                     }
@@ -65,8 +65,8 @@ public class Bonus extends HangMan
                             recordCorrectAnswer = score(A, B);
                         }
                         System.out.println("========================================================================");
-                        System.out.println(platTime + " " +inPutNumber+" : "+A+" A "+B+" B ");
-                        platTime++ ;
+                        System.out.println(playTime + " " +inPutNumber+" : "+A+" A "+B+" B ");
+                        playTime++ ;
                     }
                 }
 

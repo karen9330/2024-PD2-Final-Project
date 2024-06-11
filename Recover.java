@@ -29,6 +29,7 @@ public class Recover {
                     System.out.println("> It's a draw! Sorry You can't Recover.");
                     return -1;
                 } else if ((user == 'R' && computer == 'S') || (user == 'P' && computer == 'R') || (user == 'S' && computer == 'P')) {
+                    HangMan.player.play("hangManBackGround");
                     System.out.println("> You win! You can Recover");
                     HangMan.lives++;
                     System.out.printf("> The lives remain %d !\n",HangMan.lives);
