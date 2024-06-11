@@ -7,4 +7,12 @@
 
 ### How to play
 
+```
+git https://github.com/lu1hOAO/2024-PD2-Final-Project.git
+```
+```
+java -cp ".;./jsoup.jar" Main.java 
+```
+
 ### 結語/彩蛋
+
