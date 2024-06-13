@@ -1,18 +1,60 @@
-## HankMan Game
+## HangMan Game
+Hang Man 英文原意是上吊的人，這也意味著我們的遊戲是在避免主角死掉。透過猜字謎可以保全主角的性命。
 
 ### 動機
 還記得前幾年造成全球轟動的 wordle 遊戲，讓大家陷入每日一字的瘋狂，有些事情就是這樣，越簡單越純粹，歷久彌新讓人忍不住想再三回味，我們專題的初衷也是這樣，做一款很單純的遊戲，完全以終端機和鍵盤作為溝通介面，打造一款猜字謎遊戲
 
 ### 程式架構 (code flow)
 
+![code flow](https://hackmd.io/_uploads/SkkFu5wBR.png)
+
+
+程式一開始進入主遊戲( HangMan Game)我們會到英文新聞網站抓取本輪遊戲的答案，這樣可以確保這些英文單字是真實存在且每次不同，如果不知道從何下手，也可以想想哪些單詞是在英文報導中特別常出現的，當作一種思考方向。接著每一回合使用者可以猜一個字母，若猜對遊戲繼續，猜錯的話會扣一條生命直到生命值為零。若生命值為零依然沒猜出來，可以啟動復活戰，和電腦玩猜拳，若猜贏就能多一條生命。這個機制是為了給那些猜到最後只剩下一兩個字母的玩家多點機會!
+
+若遊戲結束 則會詢問是否進入 Bonus 遊戲 (經典的 XAXB) 由於猜數字遊戲的邏輯與主遊戲相似，且比較容易，所以可以當作額外練習，給那些在主遊戲輸掉比賽的人一點機會，也給那些在主遊戲贏得比賽的人一點驚喜。
+
+
+
 ### How to play
 
 ```
-git https://github.com/lu1hOAO/2024-PD2-Final-Project.git
+git clone https://github.com/lu1hOAO/2024-PD2-Final-Project.git
 ```
+* In Windows
+```.JAVA
+javac -cp ".;./jsoup.jar" Main.java //編譯
 ```
-java -cp ".;./jsoup.jar" Main.java 
+```.JAVA
+java -cp ".;./jsoup.jar" Main //執行
 ```
+* In Mac/Linux
+```.java
+javac -cp ".:./jsoup.jar" Main.java //編譯
+```
+```.java
+java -cp ".:./jsoup.jar" Main //執行
+```
+原則上只要執行就可以了，我們有編譯好的 Class 檔
 
-### 結語/彩蛋
+### 分工
 
+
+|   學號     | 姓名  | 負責項目                         |
+|:---------:| ------| -------------------------------|
+| E64096261 | 黃律瑛 |GUI Class、程式碼整合、readme 撰寫 |
+| E64122038 | 蔡嘉穎 |Bonus Class                          |
+| C24116095 | 黃紋綺 |HangMan Class、Sound Class      |
+| C44116219 | 蔡亦琁 |Recover Class                   |
+
+### 遇到的困難&如何解決
+
+1. 一開始 GUI 想要用 JFrame 但因為無法解決 進入 function 的問題以及要滿足即時更新 JPanel 所以在全組同學同意下改成以 Terminal 作為互動介面。
+2. Ascii Art 的部分，原本寫了一個把圖片轉成 Ascii Art 的程式，但轉出來實在太大，過於喧賓奪主，所以改成文字。
+
+3. HangMan出題的英文單字庫問題：
+    * 原本想用Jsoup從BBC上抓取程式執行當下第一篇新聞內容，但BBC是動態的網頁無法抓取，所以最後改去抓CNN的新聞。
+    * CNN新聞若為Live Updates則會抓到null，因此選擇新聞的類型為Travel以避免即時更新而抓不到資料的問題。
+
+
+### 結語
+我們團隊在本次分工非常順利，原本四個人互不認識，甚至沒有見過面，只是透過訊息溝通每個人就都有把自己負責的部分做好了。
